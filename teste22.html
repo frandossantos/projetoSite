@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="testecss.css" />
+  <div class="small-image"></div>
+  <style>
+    #next-button {
+      float: right;
+    }
+
+    /* Estilos para o submenu */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      z-index: 1;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      color: #fefefe;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #e63535;
+    }
+
+    /* Estilos para o submenu quando o mouse está sobre ele */
+    .dropdown:hover .dropdown-content {
+      background-color:  rgb(74, 73, 73);
+    }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="sobre.html">Sobre</a>
+    <div class="dropdown">
+      <a href="#" class="dropbtn">Produtos</a>
+      <div class="dropdown-content">
+        <a href="#">Opção 1</a>
+        <a href="#">Opção 2</a>
+        <a href="#">Opção 3</a>
+      </div>
+    </div>
+    <a href="contato.html">Contato</a>
+    <div class="animation start-home"></div>
+  </nav>
+
+  <div id="folha-cinza"></div>
+
+  <div id="image-container">
+    <img id="image" src="1.png" alt="Imagem 1">
+  </div>
+
+  <button id="next-button" onclick="changeImage()">Próxima imagem</button>
+
+  <script>
+    const images = [
+      "1.png",
+      "2.png",
+      "3.png",
+      "4.png"
+    ];
+
+    let currentImageIndex = 0;
+    const imageElement = document.getElementById("image");
+    const nextButton = document.getElementById("next-button");
+
+    function changeImage() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      const newImageSource = images[currentImageIndex];
+      imageElement.src = newImageSource;
+    }
+
+    function autoChangeImage() {
+      changeImage();
+    }
+
+    setInterval(autoChangeImage, 3000);
+  </script>
+</body>
+</html>
